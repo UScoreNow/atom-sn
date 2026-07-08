@@ -15,8 +15,9 @@ the canonical agent entry point; `CLAUDE.md` is a symlink to it.
 3. MUST NOT use the retired brand names "Newsprint", "Night Press", or "Paper"
    (as a theme name) anywhere. The system is **AtomSN**; themes are
    "AtomSN Light" / "AtomSN Dark". The `AsnPalette.paperXX` color-ramp
-   identifiers are a color name, not a brand name, and stay until a separate
-   cross-repo rename. (Source: brand decision 2026-07-08, atom-sn-docs.)
+   identifiers are a color name, not a brand name, and are permanent — the
+   ramp keeps the `paper` name. (Source: brand decision 2026-07-08,
+   atom-sn-docs; ramp-name decision 2026-07-08.)
 4. MUST prefix public widgets/classes `Asn*` and files `asn_*.dart`; the
    public API MUST NOT expose `Shad*` types (wrap them in `Asn*` enums/models).
 5. MUST use HugeIcons only (no LucideIcons) and the ElmsSans font (asset path

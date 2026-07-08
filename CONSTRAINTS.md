@@ -27,8 +27,9 @@ applies. Style preferences live in ARCHITECTURE.md files, not here.
   Source: brand decision 2026-07-08 (canonical in atom-sn-docs).
   - Exception: the `AsnPalette.paperXX` color-ramp identifiers (and matching
     `color.paper.*` tokens in atom-sn-docs) are a descriptive color name, not
-    a brand name. They stay until a dedicated cross-repo breaking rename.
-    Expiry: that rename.
+    a brand name. They are permanent: the previously considered cross-repo
+    rename was evaluated and rejected on 2026-07-08 — the ramp keeps the
+    `paper` name. MUST NOT rename it.
 
 ## Dependencies
 
