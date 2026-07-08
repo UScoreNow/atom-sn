@@ -16,6 +16,9 @@ State as of 2026-07-08. Update when finishing substantial work.
 - Long tail of component fixes merged to `dev`: menu concentric radius,
   breadcrumb variants, select variants/behavior, time-picker period,
   checkbox/radio sublabel alignment, tooltip hover, ElmsSans defaults.
+- Paper-ramp naming resolved (2026-07-08): the `AsnPalette.paperXX` /
+  `color.paper.*` ramp keeps the `paper` name permanently; the cross-repo
+  breaking rename considered after the rebrand was rejected.
 
 ## In progress
 
@@ -29,9 +32,6 @@ State as of 2026-07-08. Update when finishing substantial work.
   old URL redirects, so it works). Update on the next dependency bump.
 - The pinned fork SHA is behind the tip of branch `usn/0.54.0-elms-huge`;
   bump deliberately when the newer fork commits are needed.
-- Future breaking rename of the `paper` color ramp (`AsnPalette.paperXX` here,
-  `color.paper.*` in atom-sn-docs); new ramp name not yet decided. Branding-only
-  scrub was done first on purpose.
 - `dev` shows pre-release version metadata (e.g. `pubspec.yaml` 0.1.0 vs
   1.0.0 released on `main`) until the next `main -> dev` back-merge; expected
   with the merge-commit promotion flow.
