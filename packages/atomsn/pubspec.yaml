@@ -3,7 +3,7 @@ description: >-
   AtomSN: brand-neutral, themeable Flutter component library organized by
   atomic design + clean architecture. Wraps the shadcn_ui catalog and ships
   the AtomSN theme as the default preset.
-version: 1.0.0
+version: 1.1.0
 publish_to: none
 homepage:
 
