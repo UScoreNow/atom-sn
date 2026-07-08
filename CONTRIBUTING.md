@@ -32,12 +32,12 @@ Working branches are named `type/descriptive-name`, for example
 
 ## Publishing a Release (promotion `dev -> main`)
 
-1. **Bump the version** in `packages/atomsn/pubspec.yaml` (semver). This is the
-   key step: the Release tag comes from there.
-2. Open a `dev -> main` PR and merge it with CI green.
-3. `release.yml` creates the `v<version>` Release with notes auto-generated from
-   the included PRs. If the tag already exists (you forgot to bump), the Release is
-   skipped without failing: bump on the next promotion.
+1. Open a `dev -> main` PR and merge it with CI green.
+2. On the push to `main`, `release-please.yml` opens or updates the release PR
+   (version bump in `packages/atomsn/pubspec.yaml` + CHANGELOG, derived from
+   the Conventional Commits included).
+3. Merging that release PR creates the tag and the GitHub Release. No manual
+   version bumps or tags.
 
 ## Protection rules (`main` and `dev`)
 
