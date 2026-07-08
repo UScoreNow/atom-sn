@@ -34,7 +34,8 @@ class AsnCheckbox extends StatelessWidget {
         strokeWidth: 2,
         color: ShadTheme.of(context).colorScheme.primaryForeground,
       ),
-      // The main text stays centered vertically with the checkbox.
+      // The checkbox stays centered with the primary label; the sublabel
+      // renders below it (handled by the fork's layout).
       crossAxisAlignment: CrossAxisAlignment.center,
     );
   }

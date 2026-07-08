@@ -58,6 +58,17 @@ abstract final class AsnTheme {
           secondaryFocusedBorder: focusRing(AsnRadius.sm),
         ),
       ),
+      // Highlighted options sit inside a md-radius (12) popover with 4px of
+      // options padding, so their own radius must drop to sm (12 - 4 = 8) to
+      // stay concentric; otherwise the square-ish corners poke out.
+      optionTheme: const ShadOptionTheme(radius: AsnRadius.brSm),
+      // Items defaulted their highlight radius to the menu radius (md, 12), so
+      // their corners poked out. Drop them to sm (8) to nest inside the menu.
+      contextMenuTheme: ShadContextMenuTheme(
+        itemDecoration: ShadDecoration(
+          border: ShadBorder.all(radius: AsnRadius.brSm, width: 0),
+        ),
+      ),
     );
   }
 

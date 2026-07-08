@@ -13,8 +13,12 @@ class MoleculesScreen extends StatefulWidget {
 
 class _MoleculesScreenState extends State<MoleculesScreen> {
   String? _selectedTeam;
+  String? _searchedTeam;
+  String? _selectedZone;
+  List<String> _selectedTeams = const [];
   DateTime? _selectedDate;
   AsnTime? _selectedTime;
+  AsnTime? _selectedTimePeriod;
   List<String> _chips = const ['design', 'frontend'];
   String _phone = '+34';
   int _page = 1;
@@ -27,6 +31,25 @@ class _MoleculesScreenState extends State<MoleculesScreen> {
     AsnSelectOption(value: 'avengers', label: 'The Avengers'),
     AsnSelectOption(value: 'liga', label: 'Justice League'),
     AsnSelectOption(value: 'guardianes', label: 'Guardians of the Galaxy'),
+  ];
+
+  // Long list to showcase the popover scrolling.
+  static const List<AsnSelectOption<String>> _zoneOptions = [
+    AsnSelectOption(value: 'est', label: 'Eastern Standard Time (EST)'),
+    AsnSelectOption(value: 'cst', label: 'Central Standard Time (CST)'),
+    AsnSelectOption(value: 'mst', label: 'Mountain Standard Time (MST)'),
+    AsnSelectOption(value: 'pst', label: 'Pacific Standard Time (PST)'),
+    AsnSelectOption(value: 'akst', label: 'Alaska Standard Time (AKST)'),
+    AsnSelectOption(value: 'hst', label: 'Hawaii Standard Time (HST)'),
+    AsnSelectOption(value: 'gmt', label: 'Greenwich Mean Time (GMT)'),
+    AsnSelectOption(value: 'cet', label: 'Central European Time (CET)'),
+    AsnSelectOption(value: 'eet', label: 'Eastern European Time (EET)'),
+    AsnSelectOption(value: 'msk', label: 'Moscow Time (MSK)'),
+    AsnSelectOption(value: 'ist', label: 'India Standard Time (IST)'),
+    AsnSelectOption(value: 'jst', label: 'Japan Standard Time (JST)'),
+    AsnSelectOption(value: 'aest', label: 'Australian Eastern Time (AEST)'),
+    AsnSelectOption(value: 'nzst', label: 'New Zealand Standard Time (NZST)'),
+    AsnSelectOption(value: 'brt', label: 'Brasilia Time (BRT)'),
   ];
 
   static const List<Color> _swatches = [
@@ -49,6 +72,34 @@ class _MoleculesScreenState extends State<MoleculesScreen> {
             placeholder: 'Select a team',
             options: _teamOptions,
             onChanged: (value) => setState(() => _selectedTeam = value),
+          ),
+        ),
+        DemoBlock(
+          title: 'AsnSelect.withSearch',
+          child: AsnSelect<String>.withSearch(
+            value: _searchedTeam,
+            placeholder: 'Search a team',
+            searchPlaceholder: 'Type to filter...',
+            options: _teamOptions,
+            onChanged: (value) => setState(() => _searchedTeam = value),
+          ),
+        ),
+        DemoBlock(
+          title: 'AsnSelect (scrollable)',
+          child: AsnSelect<String>(
+            value: _selectedZone,
+            placeholder: 'Select a timezone',
+            options: _zoneOptions,
+            onChanged: (value) => setState(() => _selectedZone = value),
+          ),
+        ),
+        DemoBlock(
+          title: 'AsnMultiSelect',
+          child: AsnMultiSelect<String>(
+            values: _selectedTeams,
+            placeholder: 'Select teams',
+            options: _teamOptions,
+            onChanged: (values) => setState(() => _selectedTeams = values),
           ),
         ),
         DemoBlock(
@@ -140,30 +191,61 @@ class _MoleculesScreenState extends State<MoleculesScreen> {
           child: AsnBreadcrumb(
             items: [
               AsnBreadcrumbItem(label: const Text('Home'), onTap: () {}),
-              AsnBreadcrumbItem(label: const Text('Projects'), onTap: () {}),
-              const AsnBreadcrumbItem(label: Text('Detail')),
-            ],
-          ),
-        ),
-        DemoBlock(
-          title: 'AsnBreadcrumb — collapsed',
-          child: AsnBreadcrumb(
-            items: [
-              AsnBreadcrumbItem(label: const Text('Home'), onTap: () {}),
-              AsnBreadcrumbItem.dropdown(
-                trigger: const Text('…'),
+              AsnBreadcrumbItem.ellipsis(
                 menuItems: [
                   AsnBreadcrumbMenuItem(
-                    label: const Text('Workspace'),
+                    label: const Text('Documentation'),
                     onTap: () {},
                   ),
                   AsnBreadcrumbMenuItem(
-                    label: const Text('Projects'),
+                    label: const Text('Themes'),
+                    onTap: () {},
+                  ),
+                  AsnBreadcrumbMenuItem(
+                    label: const Text('GitHub'),
                     onTap: () {},
                   ),
                 ],
               ),
-              const AsnBreadcrumbItem(label: Text('Detail')),
+              AsnBreadcrumbItem(label: const Text('Components'), onTap: () {}),
+              const AsnBreadcrumbItem(label: Text('Breadcrumb')),
+            ],
+          ),
+        ),
+        DemoBlock(
+          title: 'AsnBreadcrumb — custom separator',
+          child: AsnBreadcrumb(
+            separator: const Text('/'),
+            items: [
+              AsnBreadcrumbItem(label: const Text('Home'), onTap: () {}),
+              AsnBreadcrumbItem(label: const Text('Components'), onTap: () {}),
+              const AsnBreadcrumbItem(label: Text('Breadcrumb')),
+            ],
+          ),
+        ),
+        DemoBlock(
+          title: 'AsnBreadcrumb — dropdown',
+          child: AsnBreadcrumb(
+            items: [
+              AsnBreadcrumbItem(label: const Text('Home'), onTap: () {}),
+              AsnBreadcrumbItem.dropdown(
+                trigger: const Text('Components'),
+                menuItems: [
+                  AsnBreadcrumbMenuItem(
+                    label: const Text('Documentation'),
+                    onTap: () {},
+                  ),
+                  AsnBreadcrumbMenuItem(
+                    label: const Text('Themes'),
+                    onTap: () {},
+                  ),
+                  AsnBreadcrumbMenuItem(
+                    label: const Text('GitHub'),
+                    onTap: () {},
+                  ),
+                ],
+              ),
+              const AsnBreadcrumbItem(label: Text('Breadcrumb')),
             ],
           ),
         ),
@@ -184,50 +266,11 @@ class _MoleculesScreenState extends State<MoleculesScreen> {
             onChanged: (time) => setState(() => _selectedTime = time),
           ),
         ),
-        const DemoBlock(
-          title: 'AsnTimePickerField',
-          child: AsnTimePickerField(
-            label: Text('Start'),
-            placeholder: Text('HH'),
-          ),
-        ),
         DemoBlock(
-          title: 'AsnForm',
-          child: AsnForm(
-            child: Builder(
-              builder: (context) => Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  AsnInputFormField(
-                    id: 'email',
-                    label: 'Email',
-                    placeholder: 'you@company.com',
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (value) =>
-                        value.contains('@') ? null : 'Enter a valid email',
-                  ),
-                  const SizedBox(height: AsnSpacing.x3),
-                  const AsnSelectFormField<String>(
-                    id: 'team',
-                    label: 'Team',
-                    placeholder: 'Select a team',
-                    options: _teamOptions,
-                  ),
-                  const SizedBox(height: AsnSpacing.x3),
-                  AsnCheckboxFormField(
-                    id: 'terms',
-                    inputLabel: const Text('I accept the terms'),
-                    validator: (checked) =>
-                        checked ? null : 'You must accept the terms',
-                  ),
-                  const SizedBox(height: AsnSpacing.x4),
-                  AsnButton(
-                    onPressed: () => AsnForm.of(context).validate(),
-                    child: const Text('Submit'),
-                  ),
-                ],
-              ),
-            ),
+          title: 'AsnTimePicker.period',
+          child: AsnTimePicker.period(
+            value: _selectedTimePeriod,
+            onChanged: (time) => setState(() => _selectedTimePeriod = time),
           ),
         ),
         DemoBlock(

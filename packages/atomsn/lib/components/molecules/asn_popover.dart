@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../../theme/asn_text_theme.dart';
+
 /// Floating panel anchored to a [child]. Wraps `ShadPopover`.
 ///
 /// Controlled: visibility is dictated by [visible] and changes (including
@@ -59,7 +61,13 @@ class _AsnPopoverState extends State<AsnPopover> {
   Widget build(BuildContext context) {
     return ShadPopover(
       controller: _controller,
-      popover: (context) => widget.popover,
+      // ShadPopover wraps the content in a DefaultTextStyle that sets only the
+      // color, replacing the ambient style and dropping the ElmsSans family.
+      // Re-apply the family so popover text matches the rest of the system.
+      popover: (context) => DefaultTextStyle.merge(
+        style: const TextStyle(fontFamily: AsnTextTheme.fontFamily),
+        child: widget.popover,
+      ),
       child: widget.child,
     );
   }

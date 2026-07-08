@@ -24,14 +24,14 @@ lib/
 - Components are **stateless and controlled** (`value` + `onChanged`), with no
   business logic or state-management dependencies.
 - The public API never exposes `Shad*` types: each component defines its own
-  `Ax*` enums/models.
+  `Asn*` enums/models.
 - `ShadColorScheme` does not cover all editorial roles (warning, link, success,
   highlightMark, borderSection...); those travel via `AsnThemeScope` and are read with
   `AsnTheme.of(context)`.
 
 ## Installation
 
-It is part of the [`UScoreNow/atom-sn`](https://github.com/UScoreNow/atom-sn) monorepo.
+It is part of the [`UScoreNow/atom-sn-flutter`](https://github.com/UScoreNow/atom-sn-flutter) monorepo.
 Within the monorepo, apps consume it by `path`:
 
 ```yaml
@@ -46,7 +46,7 @@ From an external repo, add the git dependency pointing to the monorepo:
 dependencies:
   atomsn:
     git:
-      url: https://github.com/UScoreNow/atom-sn.git
+      url: https://github.com/UScoreNow/atom-sn-flutter.git
       path: packages/atomsn
       ref: main
 ```
@@ -113,7 +113,7 @@ AsnApp(
 
 The demo app (all components live, with a light/dark toggle)
 lives in this same monorepo, in `apps/demo`, and is published at
-https://uscorenow.github.io/atom-sn/.
+https://uscorenow.github.io/atom-sn-flutter/.
 
 ## Notes
 

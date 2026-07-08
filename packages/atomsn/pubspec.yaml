@@ -20,7 +20,7 @@ dependencies:
       url: https://github.com/UScoreNow/atom-sn-shadcn-fork.git
       # Immutable commit from branch usn/0.54.0-elms-huge (reproducibility and
       # auditability: the branch can move, the SHA cannot).
-      ref: ef0dba55754e7a542f350776a331346c712508e2
+      ref: 23ab87415af254933b8d760c74719582bf2829a3
 
 dev_dependencies:
   flutter_test:

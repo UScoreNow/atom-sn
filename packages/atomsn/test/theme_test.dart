@@ -25,6 +25,14 @@ void main() {
     expect(scheme.custom['warning'], AsnColors.light.statusWarning);
   });
 
+  test('Dropdown menu items nest with a concentric sm radius', () {
+    final theme = AsnTheme.buildTheme(AsnColors.light);
+    // Options and context-menu items sit in a md (12) menu, so their own
+    // highlight radius drops to sm (8) to nest instead of poking out.
+    expect(theme.optionTheme.radius, AsnRadius.brSm);
+    expect(theme.contextMenuTheme.itemDecoration?.border?.radius, AsnRadius.brSm);
+  });
+
   testWidgets('AsnTheme.of returns the active mode colors under AsnApp', (
     tester,
   ) async {

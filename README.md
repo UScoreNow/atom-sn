@@ -4,14 +4,16 @@ A brand-neutral, themeable Flutter design system, organized by **atomic
 design** + **clean architecture** on top of [`shadcn_ui`](https://pub.dev/packages/shadcn_ui),
 with the **AtomSN** theme by default.
 
-**Live demo:** https://uscorenow.github.io/atom-sn/
+**Live demo:** https://uscorenow.github.io/atom-sn-flutter/
+
+**Agent entry point:** [AGENTS.md](AGENTS.md) (`CLAUDE.md` is a symlink to it).
 
 ## Structure (monorepo)
 
 ```
 packages/atomsn/   # the library (import 'package:atomsn/atomsn.dart')
 apps/demo/         # showcase app for every component, published to Pages
-.github/workflows/ # ci.yml (analyzer) + pages.yml (deploy to Pages) + release.yml
+.github/workflows/ # ci.yml (analyzer) + pages.yml (deploy to Pages) + release-please.yml
 ```
 
 The demo consumes the library by `path`, so any change in
@@ -41,8 +43,9 @@ green. The branch model is detailed in [CONTRIBUTING.md](CONTRIBUTING.md):
 ## Deployment
 
 Each push to `dev` triggers `.github/workflows/pages.yml`, which builds `apps/demo`
-to web and publishes it to GitHub Pages. Each merge to `main` triggers `release.yml`,
-which creates the Release from the version in `packages/atomsn/pubspec.yaml`.
+to web and publishes it to GitHub Pages. Each merge to `main` triggers
+`release-please.yml`, which maintains a release PR and cuts the Release (tag,
+notes, and `packages/atomsn/pubspec.yaml` version bump) when that PR is merged.
 
 ## Contributing
 
