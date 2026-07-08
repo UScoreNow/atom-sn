@@ -4,17 +4,17 @@ Demo app for [`atomsn`](../../packages/atomsn): shows all
 components (atoms, molecules, organisms, templates) live, with a theme toggle
 light ("AtomSN Light") / dark ("AtomSN Dark").
 
-**Live demo:** https://uscorenow.github.io/atom-sn/
+**Live demo:** https://uscorenow.github.io/atom-sn-flutter/
 
 > The site is built and published automatically to GitHub Pages via the
-> `.github/workflows/pages.yml` workflow on every push to `main`. There is no manual
+> `.github/workflows/pages.yml` workflow on every push to `dev`. There is no manual
 > deployment or separate output repo.
 
 ## Run
 
 ```bash
 flutter pub get
-flutter run -d chrome   # o -d linux
+flutter run -d chrome   # or -d linux
 ```
 
 The `atomsn` dependency is resolved by `path` from `packages/atomsn` within the
